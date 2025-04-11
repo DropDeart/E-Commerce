@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{34254CFE-6993-41C5-AE38-7B723A782557}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{8B90CB5B-1FF5-4B04-977E-C9B31A9AA635}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{0A25B6DC-0F80-495B-863E-A59DBD648EAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4C9C1521-74E7-4784-BA20-36FC4F4E6226}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LjussAPI.Application", "LjussAPI.Core\LjussAPI.Application.csproj", "{0CEE9448-6F19-4CE3-BBCA-3C9FEC6F2818}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ljuss.Core", "Ljuss.Core\Ljuss.Core.csproj", "{3825ACB3-22BE-4AF5-9902-5873CABC800F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LjussAPI.Infrastructure", "LjussAPI.Infrastructure\LjussAPI.Infrastructure.csproj", "{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LjussAPI", "LjussAPI\LjussAPI.csproj", "{D2768706-1849-40B6-9491-36F3B03F8263}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CEE9448-6F19-4CE3-BBCA-3C9FEC6F2818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CEE9448-6F19-4CE3-BBCA-3C9FEC6F2818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CEE9448-6F19-4CE3-BBCA-3C9FEC6F2818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CEE9448-6F19-4CE3-BBCA-3C9FEC6F2818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3825ACB3-22BE-4AF5-9902-5873CABC800F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3825ACB3-22BE-4AF5-9902-5873CABC800F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3825ACB3-22BE-4AF5-9902-5873CABC800F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3825ACB3-22BE-4AF5-9902-5873CABC800F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2768706-1849-40B6-9491-36F3B03F8263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2768706-1849-40B6-9491-36F3B03F8263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2768706-1849-40B6-9491-36F3B03F8263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2768706-1849-40B6-9491-36F3B03F8263}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0CEE9448-6F19-4CE3-BBCA-3C9FEC6F2818} = {8B90CB5B-1FF5-4B04-977E-C9B31A9AA635}
+		{3825ACB3-22BE-4AF5-9902-5873CABC800F} = {34254CFE-6993-41C5-AE38-7B723A782557}
+		{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7} = {0A25B6DC-0F80-495B-863E-A59DBD648EAE}
+		{D2768706-1849-40B6-9491-36F3B03F8263} = {4C9C1521-74E7-4784-BA20-36FC4F4E6226}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDAC2D97-4A5E-476C-A259-9EE9AFD6DEA6}
+	EndGlobalSection
+EndGlobal
