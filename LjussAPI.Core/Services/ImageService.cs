@@ -1,5 +1,5 @@
 ﻿using Ljuss.Core.Domian;
-using Ljuss.Core.DTOs;
+using Ljuss.Applications.DTOs;
 using Ljuss.Core.Repositories;
 using LjussAPI.Application.Interfaces;
 using Microsoft.AspNetCore.Http;

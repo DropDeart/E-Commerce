@@ -1,5 +1,5 @@
 ﻿using Ljuss.Core.Configurations;
-using Ljuss.Core.DTOs;
+using Ljuss.Applications.DTOs;
 using Ljuss.Core.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;

@@ -1,5 +1,5 @@
 ﻿using Ljuss.Core.Domian;
-using Ljuss.Core.DTOs;
+using Ljuss.Applications.DTOs;
 using Ljuss.Core.Repositories;
 using LjussAPI.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -38,7 +38,7 @@ namespace LjussAPI.Application.Services
             }
 
             string profilePictureUrl = null;
-            if (!string.IsNullOrEmpty(user.ProfilePictureUrl))
+            if (!String.IsNullOrEmpty(user.ProfilePictureUrl))
             {
                 if (user.ProfilePictureUrl.StartsWith("http"))
                 {
@@ -50,11 +50,7 @@ namespace LjussAPI.Application.Services
                     {
                         var fileName = Path.GetFileName(user.ProfilePictureUrl);
                         profilePictureUrl = $"{_httpContextAccessor.HttpContext.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}/uploads/{fileName}";
-                    }
-                    else
-                    {
-                        Console.WriteLine("HttpContext null geldi!");
-                    }
+                    }                    
                 }
             }
 

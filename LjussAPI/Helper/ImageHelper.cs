@@ -1,4 +1,4 @@
-﻿using Ljuss.Core.DTOs;
+﻿using Ljuss.Applications.DTOs;
 
 namespace LjussAPI.Helper
 {

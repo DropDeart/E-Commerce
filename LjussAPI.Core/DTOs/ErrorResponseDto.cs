@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ljuss.Core.DTOs
+namespace Ljuss.Applications.DTOs
 {
     public class ErrorResponseDto
     {

@@ -1,6 +1,6 @@
 ﻿using Ljuss.Core.Configurations;
 using Ljuss.Core.Domian;
-using Ljuss.Core.DTOs;
+using Ljuss.Applications.DTOs;
 using LjussAPI.Application.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
