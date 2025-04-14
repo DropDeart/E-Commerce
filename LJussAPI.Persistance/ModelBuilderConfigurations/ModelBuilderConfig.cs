@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LjussAPI.Infrastructure.Persistence.ModelBuilderConfigurations
+namespace LjussAPI.Persistence.ModelBuilderConfigurations
 {
     public class ModelBuilderConfig
     {

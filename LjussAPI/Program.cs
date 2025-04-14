@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using LjussAPI.Infrastructure.Persistence;
+using LjussAPI.Persistence;
 using Ljuss.Core.Configurations;
 using LjussAPI.Application.Interfaces;
 using LjussAPI.Application.Services;

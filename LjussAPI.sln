@@ -18,6 +18,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LjussAPI.Infrastructure", "LjussAPI.Infrastructure\LjussAPI.Infrastructure.csproj", "{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LjussAPI", "LjussAPI\LjussAPI.csproj", "{D2768706-1849-40B6-9491-36F3B03F8263}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3825ACB3-22BE-4AF5-9902-5873CABC800F} = {3825ACB3-22BE-4AF5-9902-5873CABC800F}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistance", "Persistance", "{6B87EF76-0055-4FEE-95F7-48DE332B5F92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LJussAPI.Persistance", "LJussAPI.Persistance\LJussAPI.Persistance.csproj", "{A1444E30-F933-4E33-9271-D3812A296C42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +48,10 @@ Global
 		{D2768706-1849-40B6-9491-36F3B03F8263}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2768706-1849-40B6-9491-36F3B03F8263}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2768706-1849-40B6-9491-36F3B03F8263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1444E30-F933-4E33-9271-D3812A296C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1444E30-F933-4E33-9271-D3812A296C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1444E30-F933-4E33-9271-D3812A296C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1444E30-F933-4E33-9271-D3812A296C42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +61,7 @@ Global
 		{3825ACB3-22BE-4AF5-9902-5873CABC800F} = {34254CFE-6993-41C5-AE38-7B723A782557}
 		{1B22EF49-B7D7-47F8-8CFC-D4687315CEC7} = {0A25B6DC-0F80-495B-863E-A59DBD648EAE}
 		{D2768706-1849-40B6-9491-36F3B03F8263} = {4C9C1521-74E7-4784-BA20-36FC4F4E6226}
+		{A1444E30-F933-4E33-9271-D3812A296C42} = {6B87EF76-0055-4FEE-95F7-48DE332B5F92}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDAC2D97-4A5E-476C-A259-9EE9AFD6DEA6}

@@ -1,5 +1,6 @@
 ﻿using Ljuss.Core.Domian;
 using Ljuss.Core.Repositories;
+using LjussAPI.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LjussAPI.Infrastructure.Persistence
+namespace LjussAPI.Persistence
 {
     public class UserVerificationRepository : IUserVerificationRepository
     {

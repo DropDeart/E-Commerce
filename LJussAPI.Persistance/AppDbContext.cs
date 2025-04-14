@@ -1,5 +1,5 @@
 ﻿using Ljuss.Core.Domian;
-using LjussAPI.Infrastructure.Persistence.ModelBuilderConfigurations;
+using LjussAPI.Persistence.ModelBuilderConfigurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LjussAPI.Infrastructure.Persistence
+namespace LjussAPI.Persistence
 {
     public class AppDbContext : DbContext
     {

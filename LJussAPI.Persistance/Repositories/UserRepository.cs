@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using NLog;
 using System;
 
-namespace LjussAPI.Infrastructure.Persistence
+namespace LjussAPI.Persistence
 {
     public class UserRepository : IUserRepository
     {

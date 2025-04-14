@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using Image = Ljuss.Core.Domian.Image;
 
-namespace LjussAPI.Infrastructure.Persistence
+namespace LjussAPI.Persistence
 {
     public class ImageRepository : IImageRepository
     {
