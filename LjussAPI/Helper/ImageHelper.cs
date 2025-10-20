@@ -1,4 +1,4 @@
-﻿using Ljuss.Applications.DTOs;
+﻿using LjussAPI.Application.DTOs.ImageDTOs;
 
 namespace LjussAPI.Helper
 {

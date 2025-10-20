@@ -13,6 +13,15 @@ namespace Ljuss.Core.Enums
         EmailAlreadyExist = 1002,
         WrongVerificationCode = 1003,
         UserNotVerified = 1004,
-        NotAgainSendVerificationCode = 1005
+        NotAgainSendVerificationCode = 1005,
+        InvalidUser = 1006,
+        ProductNotExist = 1007,
+        ProductCanNotCreate = 1008,
+        ProductCanNotUpdate = 1009,
+        ProductCanNotDelete = 1010,
+        CategoryNoxExist = 1011,
+        CategoryCanNotCreate = 1012,
+        CategoryCanNotUpdate = 1013,
+        CategoryCanNotDelete = 1014
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ljuss.Core.Domian;
+using Ljuss.Core.Entities;
 
 namespace Ljuss.Core.Repositories
 {

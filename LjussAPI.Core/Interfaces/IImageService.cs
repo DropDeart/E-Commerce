@@ -1,10 +1,10 @@
-﻿using Ljuss.Applications.DTOs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ljuss.Core.Domian;
+using Ljuss.Core.Entities;
+using LjussAPI.Application.DTOs.ImageDTOs;
 
 namespace LjussAPI.Application.Interfaces
 {

@@ -1,4 +1,4 @@
-﻿using Ljuss.Core.Domian;
+﻿using Ljuss.Core.Entities;
 using Ljuss.Core.Repositories;
 using LjussAPI.Application.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -31,7 +31,7 @@ namespace LjussAPI.Infrastructure.Services
 
             var lastCode = await _userVerificationRepository.GetLastVerificationCodeAsync(userId);
 
-            if (lastCode != null && (DateTime.UtcNow - lastCode.CreatedAt).TotalMinutes < 3)
+            if (lastCode != null && (DateTime.UtcNow - lastCode.CreatedDate).TotalMinutes < 3)
             {
                 throw new InvalidOperationException("Yeni bir doğrulama kodu talep etmek için lütfen 3 dakika bekleyin.");
             }

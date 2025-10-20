@@ -1,4 +1,4 @@
-﻿using Ljuss.Core.Domian;
+﻿using Ljuss.Core.Entities;
 using Ljuss.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-using Image = Ljuss.Core.Domian.Image;
+using Image = Ljuss.Core.Entities.Image;
 
 namespace LjussAPI.Persistence
 {

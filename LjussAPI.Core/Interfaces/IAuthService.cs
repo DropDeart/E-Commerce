@@ -1,4 +1,4 @@
-﻿using Ljuss.Applications.DTOs;
+﻿using LjussAPI.Application.DTOs.AuthDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,7 @@ namespace LjussAPI.Application.Interfaces
     {
         Task<AuthResponseDto?> AuthenticateAsync(LoginRequestDto loginDto);
         Task<AuthResponseDto?> RegisterAsync(UserCreateDto userCreateDto);
+        Task<AuthResponseDto> RefreshTokenAsync(string refreshToken, string ipAddress);
         public string GetUserIdFromToken(string token);
     }
 }

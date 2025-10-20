@@ -8,8 +8,10 @@ namespace Ljuss.Core.Configurations
 {
     public class JwtOptions
     {
-        public string Key { get; set; } = String.Empty;
-        public string Issuer { get; set; } = String.Empty;
-        public string Audience { get; set; } = String.Empty;
+        public string Key { get; set; }
+        public string Issuer { get; set; }
+        public string Audience { get; set; }
+        public int ExpiryMinutes { get; set; } = 15; // Varsayılan 15 dakika
+        public int RefreshTokenExpiryDays { get; set; } = 7; // Varsayılan 7 gün
     }
 }

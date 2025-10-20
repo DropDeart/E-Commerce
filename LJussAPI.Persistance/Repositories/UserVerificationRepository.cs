@@ -1,4 +1,4 @@
-﻿using Ljuss.Core.Domian;
+﻿using Ljuss.Core.Entities;
 using Ljuss.Core.Repositories;
 using LjussAPI.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +59,7 @@ namespace LjussAPI.Persistence
 
                 return await _appDbContext.VerificationCodes
                     .Where(x => x.Code == code && !x.IsVerified)
-                    .OrderByDescending(x => x.CreatedAt) // En güncel kodu almak için sıralama ekledik.
+                    .OrderByDescending(x => x.CreatedDate) // En güncel kodu almak için sıralama ekledik.
                     .FirstOrDefaultAsync();
             }
             catch (Exception ex)

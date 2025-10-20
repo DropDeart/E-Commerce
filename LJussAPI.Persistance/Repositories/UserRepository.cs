@@ -1,6 +1,7 @@
-﻿using Ljuss.Core.Domian;
-using Ljuss.Applications.DTOs;
+﻿using Ljuss.Core.Entities;
 using Ljuss.Core.Repositories;
+using LjussAPI.Application.DTOs.AuthDTOs;
+using LjussAPI.Application.DTOs.UserDTOs;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using System;
@@ -115,6 +116,19 @@ namespace LjussAPI.Persistence
                 _logger.Error(ex.Message);
                 throw new Exception("User did not update");
             }
+        }
+
+        public async Task<bool> CheckUserPasswordAsync(Guid userId, string currentPassword)
+        {
+            var user = await _appDbContext.Users.FindAsync(userId);
+            if (user == null)
+            {
+                return false;
+            }
+
+            bool isValid = BCrypt.Net.BCrypt.Verify(currentPassword, user.PasswordHash);
+
+            return isValid;
         }
     }
 }

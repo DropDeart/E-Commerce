@@ -1,6 +1,7 @@
-﻿using Ljuss.Core.Domian;
-using Ljuss.Applications.DTOs;
+﻿
+using Ljuss.Core.Entities;
 using Ljuss.Core.Repositories;
+using LjussAPI.Application.DTOs.ImageDTOs;
 using LjussAPI.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;

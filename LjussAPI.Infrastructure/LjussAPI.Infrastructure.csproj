@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LjussAPI.Core\LjussAPI.Application.csproj" />
+    <ProjectReference Include="..\LJussAPI.Persistance\LJussAPI.Persistance.csproj" />
   </ItemGroup>
 
   <ItemGroup>

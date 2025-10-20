@@ -1,4 +1,4 @@
-﻿using Ljuss.Core.Domian;
+﻿using Ljuss.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +14,6 @@ namespace Ljuss.Core.Repositories
         public Task<User> AddUserAsync(User user);
         public Task UpdateUserAsync(User user);
         public Task<IEnumerable<User>> GetAllAsync();
+        public Task<bool> CheckUserPasswordAsync(Guid userId, string currentPassword);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Ljuss.Core.Configurations;
-using Ljuss.Applications.DTOs;
 using Ljuss.Core.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using LjussAPI.Application.DTOs.MiddlewareDTOs;
 
 namespace LjussAPI.Infrastructure.Middleware
 {

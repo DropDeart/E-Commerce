@@ -1,4 +1,4 @@
-﻿using Ljuss.Core.Domian;
+﻿using Ljuss.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
