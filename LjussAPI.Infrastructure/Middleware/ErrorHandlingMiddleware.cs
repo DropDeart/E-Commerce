@@ -31,7 +31,7 @@ namespace LjussAPI.Infrastructure.Middleware
             }
             catch (CustomException ex)
             {
-                _logger.LogError(ex, "An error occurred.");
+                _logger.LogError(ex, "An error occurred..");
                 var errorResponse = new ErrorResponseDto(
                     ex.Message,
                     ex.Message,
