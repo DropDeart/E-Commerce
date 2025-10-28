@@ -6,7 +6,6 @@ using LjussAPI.Application.Services;
 using LjussAPI.Infrastructure.Services;
 using Ljuss.Core.Repositories;
 using LjussAPI.Infrastructure.Middleware;
-using YourApp.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -14,21 +13,21 @@ using Microsoft.Extensions.FileProviders;
 using Ljuss.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using LJussAPI.Persistance.Repositories;
+using YourApp.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// -------------------- DATABASE --------------------
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddLogging();
-
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// -------------------- JWT AUTH --------------------
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 var jwtOptions = builder.Configuration.GetSection("Jwt").Get<JwtOptions>();
 if (jwtOptions == null || string.IsNullOrEmpty(jwtOptions.Key))
@@ -55,7 +54,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// Servisleri ekle
+// -------------------- DEPENDENCY INJECTION --------------------
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddSingleton<IEmailService, EmailService>();
@@ -64,7 +63,6 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserVerificationRepository, UserVerificationRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<IImageService, ImageService>();
-builder.Services.AddScoped<IAuthService, AuthService>(); 
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -73,26 +71,26 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 builder.Services.AddHttpContextAccessor();
 
-
-// **CORS Policy Tanýmla**
+// -------------------- CORS --------------------
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:3000", "https://localhost:3000")
-                  .AllowAnyHeader()
-                  .AllowCredentials()
-                  .AllowAnyMethod();
-
-        });
+    options.AddPolicy(name: MyAllowSpecificOrigins, policy =>
+    {
+        policy.WithOrigins(
+            "http://localhost:3000",
+            "https://localhost:3000",
+            "https://dropdeart-001-site1.qtempurl.com"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
 });
 
 var app = builder.Build();
 
-
+// -------------------- STATIC FILES --------------------
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
@@ -100,20 +98,22 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/uploads"
 });
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+// -------------------- MIDDLEWARE PIPELINE --------------------
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+    // Local development için HTTPS yönlendirmesi
+    //app.UseHttpsRedirection();
+//}
 
-// **CORS Middleware Kullan**
-app.UseHttpsRedirection();
+
 app.UseCors(MyAllowSpecificOrigins);
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.MapControllers();
