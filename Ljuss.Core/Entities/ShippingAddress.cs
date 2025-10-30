@@ -12,10 +12,13 @@ namespace Ljuss.Core.Entities
         public Guid UserId { get; set; }
         public User User { get; set; }
 
+        public string Title { get; set; } = null!;
         public string AddressLine1 { get; set; }
         public string? AddressLine2 { get; set; }
-        public string City { get; set; }
-        public string PostalCode { get; set; }
-        public string Country { get; set; }
+        public int CityId { get; set; }
+        public City City { get; set; } = null!;
+        public int DistrictId { get; set; }
+        public District District { get; set; } = null!;
+        public bool IsActive { get; set; } = true;
     }
 }

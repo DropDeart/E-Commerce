@@ -29,6 +29,8 @@ namespace LjussAPI.Persistence
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<ShippingAddress> ShippingAddresses { get; set; }   
+        public DbSet<City> Cities { get; set; }
+        public DbSet<District> Districts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

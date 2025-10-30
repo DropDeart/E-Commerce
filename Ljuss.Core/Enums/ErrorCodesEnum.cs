@@ -22,6 +22,10 @@ namespace Ljuss.Core.Enums
         CategoryNoxExist = 1011,
         CategoryCanNotCreate = 1012,
         CategoryCanNotUpdate = 1013,
-        CategoryCanNotDelete = 1014
+        CategoryCanNotDelete = 1014,
+        ShippinAddresNoExist = 1015,
+        ShippinCanNotCreate = 1016,
+        ShippinCanNotUpdate = 1017,
+        ShippinCanNotDelete = 1018
     }
 }

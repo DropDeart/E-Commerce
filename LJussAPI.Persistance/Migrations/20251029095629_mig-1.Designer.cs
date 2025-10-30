@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LJussAPI.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250930131449_Init")]
-    partial class Init
+    [Migration("20251029095629_mig-1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,6 +105,26 @@ namespace LJussAPI.Persistance.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Ljuss.Core.Entities.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("Ljuss.Core.Entities.Comment", b =>
                 {
                     b.Property<Guid>("Id")
@@ -140,6 +160,31 @@ namespace LJussAPI.Persistance.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Ljuss.Core.Entities.District", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.ToTable("Districts");
                 });
 
             modelBuilder.Entity("Ljuss.Core.Entities.Favorite", b =>
@@ -623,6 +668,17 @@ namespace LJussAPI.Persistance.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Ljuss.Core.Entities.District", b =>
+                {
+                    b.HasOne("Ljuss.Core.Entities.City", "City")
+                        .WithMany("Districts")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+                });
+
             modelBuilder.Entity("Ljuss.Core.Entities.Favorite", b =>
                 {
                     b.HasOne("Ljuss.Core.Entities.Product", "Product")
@@ -783,6 +839,11 @@ namespace LJussAPI.Persistance.Migrations
             modelBuilder.Entity("Ljuss.Core.Entities.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Ljuss.Core.Entities.City", b =>
+                {
+                    b.Navigation("Districts");
                 });
 
             modelBuilder.Entity("Ljuss.Core.Entities.Order", b =>

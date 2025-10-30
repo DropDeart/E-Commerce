@@ -35,9 +35,10 @@ namespace LjussAPI.Persistence.ModelBuilderConfigurations
             #region ShippingAddress and User Relations
 
             modelBuilder.Entity<ShippingAddress>()
-                .HasOne(sa => sa.User)
-                .WithMany(u => u.ShippingAddresses)
-                .HasForeignKey(sa => sa.UserId);
+             .HasOne(sa => sa.User)
+             .WithMany(u => u.ShippingAddresses)
+             .HasForeignKey(sa => sa.UserId)
+             .OnDelete(DeleteBehavior.Cascade);
 
             #endregion
 
@@ -166,6 +167,17 @@ namespace LjussAPI.Persistence.ModelBuilderConfigurations
                 .HasForeignKey(p => p.OrderId);
 
             #endregion
+
+            #region City and District Relation
+
+            modelBuilder.Entity<City>()
+            .HasMany(c => c.Districts)
+            .WithOne(d => d.City)
+            .HasForeignKey(d => d.CityId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            #endregion
+            
         }
     }
 }

@@ -9,10 +9,12 @@ using LjussAPI.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Serilog;
 using Microsoft.Extensions.FileProviders;
 using Ljuss.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using LJussAPI.Persistance.Repositories;
+using Microsoft.OpenApi.Models;
 using YourApp.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,10 +24,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
+// -------------------- LOGGING --------------------
+builder.Host.UseSerilog((context, loggerConfig) =>
+    loggerConfig.ReadFrom.Configuration(context.Configuration));
+
 builder.Services.AddLogging();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 // -------------------- JWT AUTH --------------------
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
@@ -59,15 +64,20 @@ builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddSingleton<IEmailService, EmailService>();
 builder.Services.AddScoped<IVerificationService, VerificationService>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserVerificationRepository, UserVerificationRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddScoped<IShippingAddressService, ShippingAddressService>();
+builder.Services.AddScoped<IShippingAddressRepository, ShippingAddressRepository>();
 
 builder.Services.AddHttpContextAccessor();
 
@@ -79,8 +89,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
             "http://localhost:3000",
-            "https://localhost:3000",
-            "https://dropdeart-001-site1.qtempurl.com"
+            "https://localhost:3000"
         )
         .AllowAnyHeader()
         .AllowAnyMethod()
@@ -88,6 +97,39 @@ builder.Services.AddCors(options =>
     });
 });
 
+// -------------------- SWAGGER --------------------
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Ljuss API",
+        Version = "v1"
+    });
+
+    var securityScheme = new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "JWT Authorization header using the Bearer scheme.\r\n\r\nEnter 'Bearer' [space] and then your token.",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT"
+    };
+    c.AddSecurityDefinition("Bearer", securityScheme);
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
+// -------------------- BUILD APP --------------------
 var app = builder.Build();
 
 // -------------------- STATIC FILES --------------------
@@ -99,15 +141,12 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 // -------------------- MIDDLEWARE PIPELINE --------------------
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-
-    // Local development için HTTPS yönlendirmesi
-    //app.UseHttpsRedirection();
-//}
-
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ljuss API V1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseCors(MyAllowSpecificOrigins);
 
